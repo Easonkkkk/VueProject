@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .chara {
+        font-size: 25px;
+    }
+
+    input {
+        box-shadow: rgba(0, 0, 0, 0.1) 11px 11px 11px;
+        -moz-box-shadow: rgba(0, 0, 0, 0.1) 11px 11px 11px;
+        -webkit-box-shadow: rgba(0, 0, 0, 0.1) 11px 11px 11px;
+        box-shadow: rgba(0, 0, 0, 0.15) 0rem 0rem 0.5rem;
+        border-radius: 0.3rem;
+    }
+
+    .backimg {
+        margin-left: -10px;
+        width: 1940px;
+        height: 500px;
+        background-image: url(images/bg6.png);
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+
+    }
+
+    div.search {
+        height: 50px;
+        width: 500px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+
+    }
+
+    div.search form {
+        width: 100%;
+        height: 100%;
+    }
+
+    div.search form input:nth-child(2) {
+        width: 600px;
+        height: 100%;
+        font-size: 16px;
+        text-indent: 40px;
+        border: none;
+        float: left;
+    }
+
+
+    div.search form img {
+        position: absolute;
+        left: 50vw;
+        transform: translateX(-250px);
+        margin-top: 10px;
+        margin-left: 10px;
+        height: 20px;
+    }
+
+    .nav {
+        background-color: #000000;
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 49px;
+        text-align: center;
+    }
+
+    body {
+        min-height: 100%;
+    }
+
+    .wrapper {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .wrapper>div {
+        flex: 1;
+        text-align: center;
+        height: 36px;
+        line-height: 36px;
+    }
+
+    .dropdownWrapper {
+        /*margin-top: 36px;*/
+        border: 1px solid #2C3E50;
+        font-size: 14px;
+    }
+
+    .dropdownWrapper li {
+        display: block;
+    }
+
+    .nav-item.active {
+        background: #e3e3d3;
+    }
+
+    .dropdownBtn {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .nav-item {
+        cursor: pointer;
+    }
+
+    .footer {
+        background-color: #343A40;
+    }
+
+    .foot1 {
+        padding-top: 40px;
+    }
+
+    .foot1-img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .foot3 {
+        padding-top: 0px;
+        padding-bottom: 10px;
+    }
+
+    .foot3-text1 {
+        font-size: 8px;
+        color: white;
+    }
+
+    @font-face {
+        font-family: huakang;
+        src: url(TTF/huakang.TTF)
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>VueProject</title>
+</head>
+
+<body>
+    <script src="src/vue.global.js"></script>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <div id="app">
+
+        <!-- 导航条 -->
+        <div>
+            <div class="nav">
+                <img src="images/library.png" style="margin-left:1%;" width=45px height=45px>
+                <font style="font-family: 'huakang';margin-top:16px;font-size: 20px;" color="#FFFFFF">{{title}}</font>
+                <font style="font-family: 'huakang';margin-top:16px;margin-left:6%;font-size: 20px;" color="#FFFFFF">
+                    {{main}}</font>
+                <font style="font-family: 'huakang';margin-top:16px;margin-left:12%;font-size: 20px;" color="#FFFFFF">
+                    {{personal}}</font>
+                <font style="font-family: 'huakang';margin-top:16px;margin-left:12%;font-size: 20px;" color="#FFFFFF">
+                    {{search}}</font>
+                <font style="font-family: 'huakang';margin-top:16px;margin-left:12%;font-size: 20px;" color="#FFFFFF">
+                    {{resource}}</font>
+                <font style="font-family: 'huakang';margin-top:16px;margin-left:12%;font-size: 20px;" color="#FFFFFF">
+                    {{interact}}</font>
+                <font style="font-family: 'huakang';margin-top:16px;margin-left:12%;font-size: 20px;" color="#FFFFFF">
+                    {{cooperate}}</font>
+            </div>
+            <img src="images/background.jpg" width=1000px height=30px style="margin-left:-13px;">
+
+            <div class="backimg">
+                <div class="search" style="margin-top:265px;">
+                    <form action="#" method="post">
+                        <img src="images/search_ico.png" alt="" style="margin-left:-535px;margin-top: 13.5px;">
+                        <input type="text" name="condition" placeholder="请输入需要搜索的书籍"
+                            style="margin-left:-30px;border-radius: 3px;">
+                    </form>
+                </div>
+            </div>
+
+
+            <!-- 公告 -->
+            <br>
+            <div class="announ">
+                <div v-html="message"></div>
+            </div>
+            <br>
+            <div>
+                <span style="font-family: 'huakang';margin-left:10px;font-size:25px;">{{announ1}}</span>
+                <span style="font-family: 'huakang'; font-size:20px;">{{detail1}}</span>
+                <span style="font-family: 'huakang';margin-left:21%;font-size:25px;">{{announ5}}</span>
+                <span style="font-family: 'huakang'; font-size:20px;">{{detail5}}<span v-html="img1"></span></span>
+            </div>
+            <br>
+            <div>
+                <span style="font-family: 'huakang';margin-left:10px;font-size:25px;">{{announ2}}</span>
+                <span style="font-family: 'huakang'; font-size:20px;">{{detail2}}<span
+                        v-html="img2"></span></span></span>
+                <span style="font-family: 'huakang';margin-left:8.9%;font-size:25px;">{{announ6}}</span>
+                <span style="font-family: 'huakang'; font-size:20px;">{{detail6}}</span>
+            </div>
+
+            <br>
+            <div>
+                <span style="font-family: 'huakang';margin-left:10px;font-size:25px;">{{announ3}}</span>
+                <span style="font-family: 'huakang'; font-size:20px;">{{detail4}}</span>
+                <span style="font-family: 'huakang';margin-left:18.4%;font-size:25px;">{{announ7}}</span>
+                <span style="font-family: 'huakang'; font-size:20px;">{{detail7}}</span>
+            </div>
+            <br>
+            <div>
+                <span style="font-family: 'huakang';margin-left:10px;font-size:25px;">{{announ4}}</span>
+                <span style="font-family: 'huakang'; font-size:20px;">{{detail3}}</span>
+                <span style="font-family: 'huakang';margin-left:19.7%;font-size:25px;">{{announ8}}</span>
+                <span style="font-family: 'huakang'; font-size:20px;">{{detail8}}<span
+                        v-html="img1"></span></span></span>
+            </div>
+            <br>
+            <div>
+                <span style="font-family: 'huakang';margin-left:10px;font-size:25px;">{{announ9}}</span>
+                <span style="font-family: 'huakang'; font-size:20px;">{{detail9}}</span>
+                <span style="font-family: 'huakang';margin-left:23.75%;font-size:25px;">{{announ10}}</span>
+                <span style="font-family: 'huakang'; font-size:20px;">{{detail10}}<span
+                        v-html="img1"></span></span></span>
+            </div>
+        </div>
+
+        <br>
+        <div style="height: 313px;margin-left: 1px;">
+            <span v-html="img4"></span>
+            <span v-html="img5"></span>
+            <span v-html="img6"></span>
+        </div>
+
+
+        <!-- 页脚 -->
+        <div>
+            <footer class="footer" style="margin-top:-2px;width:1550px;height:210px;margin-left: -10px;">
+                <div align="center" class="foot1">
+                    <img src="images/logo.png" class="foot1-img">
+                </div>
+                <div align="center" class="foot3">
+                    <p class="foot3-text1" style="font-family: 'huakang';font-size:20px;">{{right}}</p>
+                    <p class="foot3-text1" style="font-family: 'huakang';font-size:20px;">{{ICP}}</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+    <!-- JS数据集 -->
+    <script>
+    // Vue实例化
+        new Vue({
+            el: '#app',//绑定页面元素
+    // 数据集
+            data: {
+                announ1: "[05-31]",
+                announ2: "[05-31]",
+                announ3: "[06-01]",
+                announ4: "[06-03]",
+                announ5: "[文学]",
+                announ6: "[历史]",
+                announ7: "[艺术]",
+                announ8: "[悬疑]",
+                announ9: "[06-02]",
+                announ10: "[漫画]",
+                title: "629图书馆",
+                main: "首页",
+                personal: "个人中心",
+                search: "登录",
+                right: "© 杭州师范大学精思苑2号楼629寝室 All Rights Reserved",
+                ICP: "浙ICP备1900592号-1",
+                message: '<img src="images/announ.png" width=300px style="margin-top:13px;margin-left:5px;"><img src="images/recom.png" width=300px style="margin-top:13px;margin-left:30%;">',
+                detail1: "关于举办2021外文原版图书书展的通知",
+                detail2: "公告：关于ZADL平台馆际互借与文献传递暂停服务的通知",
+                detail3: "关于2021年端午节图书馆开放安排的通知",
+                detail4: "关于图书馆2021年寒假前后开放安排的通知",
+                detail5: "杀死一只知更鸟",
+                detail6: "漫画半小时中华上下五千年",
+                detail7: "艺术心理疗法",
+                detail8: "猎杀档案(灭门疑云)",
+                detail9: "关于图书馆2020年过刊处理的通知",
+                detail10: "小王子",
+                resource: "资源",
+                interact: "互动",
+                cooperate: "合作",
+                img1: '<img src="images/hot.png" width=13px style="margin-top:0px;margin-left:5px;box-shadow:0 3px 5px rgba(1,0,0,0);">',
+                img2: '<img src="images/new.png" width=13px style="margin-top:0px;margin-left:5px;box-shadow:0 3px 5px rgba(1,0,0,0);">',
+                img2: '<img src="images/new1.png" width=17px style="margin-top:0px;margin-left:5px;box-shadow:0 3px 5px rgba(1,0,0,0);">',
+                img4: '<img src="images/child.png" width="510px" height="100%" style="margin-left:-10px;">',
+                img5: '<img src="images/event.png" width="510px" height="100%" style="margin-left:-10px;">',
+                img6: '<img src="images/borrow.png" width="502px" height="100%" style="margin-left:-9.5px;box-shadow:10px 0 0 #2A2421;">'
+            },
+			methods:{//绑定函数
+				
+			},
+			
+			mounted:{//构造函数
+				
+			}
+        });
+    </script>
+    <!-- <span  style="font-family: 'Catamaran', sans-serif; font-size:25px;" color="#000000">通知</span> -->
+    <!-- 阴影box-shadow: rgba(0, 0, 0, 0.15) 0rem 0rem 0.5rem; border-radius: 0.3rem; -->
+</body>
+
+</html>
